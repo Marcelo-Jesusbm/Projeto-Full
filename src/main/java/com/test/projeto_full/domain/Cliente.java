@@ -1,18 +1,28 @@
 package com.test.projeto_full.domain;
 
+import com.test.projeto_full.Enums.Perfil;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+@Entity
 public class Cliente extends Pessoa {
 
+    @OneToMany(mappedBy = "cliente")
     private List<Chamado> chamados = new ArrayList<>();
 
     public Cliente(Integer id, String nome, String cpf, String email, String senha) {
         super(id, nome, cpf, email, senha);
+        addPerfil(Perfil.CLIENTE);
     }
 
     public Cliente() {
        super();
+       addPerfil(Perfil.CLIENTE);
     }
 
     public List<Chamado> getChamados() {
