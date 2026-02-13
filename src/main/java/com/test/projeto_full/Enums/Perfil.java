@@ -1,13 +1,13 @@
-package Enums;
+package com.test.projeto_full.Enums;
 
-public enum Status {
+public enum Perfil {
 
-    ABERTO(0, "ABERTO"), ANDAMENTO(1, "ANDAMENTO"), ENCERRADO(2, "ENCERRADO");
+    ADMIN(0, "ROLE_ADMIN"), CLIENTE(1, "ROLE_CLIENTE"), TECNICO(2, "ROLE_TECNICO");
 
     private Integer codigo;
     private String descricao;
 
-    private Status(Integer codigo, String descricao) {
+    private Perfil(Integer codigo, String descricao) {
         this.codigo = codigo;
         this.descricao = descricao;
     }
@@ -17,16 +17,16 @@ public enum Status {
     public String getDescricao() {
         return descricao;
     }
-    public static Status toEnum(Integer codigo) {
+    public static Perfil toEnum(Integer codigo) {
         if (codigo == null) {
             return null;
         }
-        for (Status perfil : Status.values()) {
+        for (Perfil perfil : Perfil.values()) {
             if (codigo.equals(perfil.getCodigo())) {
                 return perfil;
             }
         }
-        throw new IllegalArgumentException("STATUS inválido: " + codigo);
+        throw new IllegalArgumentException("Enums.Perfil inválido: " + codigo);
     }
 
 }

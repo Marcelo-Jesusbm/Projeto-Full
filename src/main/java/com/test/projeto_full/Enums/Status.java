@@ -1,13 +1,13 @@
-package Enums;
+package com.test.projeto_full.Enums;
 
-public enum Prioridade {
+public enum Status {
 
-    BAIXA(0, "BAIXA"), MEDIA(1, "MEDIA"), ALTA(2, "ALTA");
+    ABERTO(0, "ABERTO"), ANDAMENTO(1, "ANDAMENTO"), ENCERRADO(2, "ENCERRADO");
 
     private Integer codigo;
     private String descricao;
 
-    private Prioridade(Integer codigo, String descricao) {
+    private Status(Integer codigo, String descricao) {
         this.codigo = codigo;
         this.descricao = descricao;
     }
@@ -17,16 +17,16 @@ public enum Prioridade {
     public String getDescricao() {
         return descricao;
     }
-    public static Prioridade toEnum(Integer codigo) {
+    public static Status toEnum(Integer codigo) {
         if (codigo == null) {
             return null;
         }
-        for (Prioridade perfil : Prioridade.values()) {
+        for (Status perfil : Status.values()) {
             if (codigo.equals(perfil.getCodigo())) {
                 return perfil;
             }
         }
-        throw new IllegalArgumentException("Enums.Prioridade inválido: " + codigo);
+        throw new IllegalArgumentException("STATUS inválido: " + codigo);
     }
 
 }

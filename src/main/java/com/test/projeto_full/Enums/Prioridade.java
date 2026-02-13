@@ -1,13 +1,13 @@
-package Enums;
+package com.test.projeto_full.Enums;
 
-public enum Perfil {
+public enum Prioridade {
 
-    ADMIN(0, "ROLE_ADMIN"), CLIENTE(1, "ROLE_CLIENTE"), TECNICO(2, "ROLE_TECNICO");
+    BAIXA(0, "BAIXA"), MEDIA(1, "MEDIA"), ALTA(2, "ALTA");
 
     private Integer codigo;
     private String descricao;
 
-    private Perfil(Integer codigo, String descricao) {
+    private Prioridade(Integer codigo, String descricao) {
         this.codigo = codigo;
         this.descricao = descricao;
     }
@@ -17,16 +17,16 @@ public enum Perfil {
     public String getDescricao() {
         return descricao;
     }
-    public static Perfil toEnum(Integer codigo) {
+    public static Prioridade toEnum(Integer codigo) {
         if (codigo == null) {
             return null;
         }
-        for (Perfil perfil : Perfil.values()) {
+        for (Prioridade perfil : Prioridade.values()) {
             if (codigo.equals(perfil.getCodigo())) {
                 return perfil;
             }
         }
-        throw new IllegalArgumentException("Enums.Perfil inválido: " + codigo);
+        throw new IllegalArgumentException("Enums.Prioridade inválido: " + codigo);
     }
 
 }
