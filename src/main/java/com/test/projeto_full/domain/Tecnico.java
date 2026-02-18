@@ -1,6 +1,6 @@
 package com.test.projeto_full.domain;
 
-import com.test.projeto_full.Enums.Perfil;
+import com.test.projeto_full.domain.Enums.Perfil;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 

@@ -1,9 +1,10 @@
 package com.test.projeto_full.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.test.projeto_full.Enums.Perfil;
+import com.test.projeto_full.domain.Enums.Perfil;
 import jakarta.persistence.*;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -14,6 +15,8 @@ import java.util.stream.Collectors;
 
 @Entity
 public class Pessoa implements Serializable {
+
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id

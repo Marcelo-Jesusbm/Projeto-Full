@@ -1,4 +1,4 @@
-package com.test.projeto_full.Enums;
+package com.test.projeto_full.domain.Enums;
 
 public enum Status {
 

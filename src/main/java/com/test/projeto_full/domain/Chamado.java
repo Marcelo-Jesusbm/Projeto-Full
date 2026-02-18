@@ -1,10 +1,11 @@
 package com.test.projeto_full.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.test.projeto_full.Enums.Prioridade;
-import com.test.projeto_full.Enums.Status;
+import com.test.projeto_full.domain.Enums.Prioridade;
+import com.test.projeto_full.domain.Enums.Status;
 import jakarta.persistence.*;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -14,6 +15,7 @@ import java.util.Objects;
 @Entity
 public class Chamado implements Serializable {
 
+   @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -40,6 +42,23 @@ public class Chamado implements Serializable {
     @ManyToOne
     @JoinColumn(name="cliente_id")
     private Cliente cliente;
+
+    public Chamado(Integer id, String titulo, String observacoes, Prioridade prioridade, Status status, Tecnico tecnico, Cliente cliente) {
+        super();
+        this.id = id;
+        this.titulo = titulo;
+        this.observacoes = observacoes;
+        this.prioridade = prioridade;
+        this.status = status;
+        this.tecnico = tecnico;
+        this.cliente = cliente;
+
+
+    }
+
+    public Chamado(Integer id, Prioridade prioridade, Status status, String s, String primeiroChamado, Tecnico tec1, Cliente cli1) {
+    }
+
 
     public String getTitulo() {
         return titulo;
@@ -130,19 +149,7 @@ public class Chamado implements Serializable {
         super();
     }
 
-    public Chamado(Integer id, String titulo, String observacoes, Prioridade prioridade, Status status, Tecnico tecnico, Cliente cliente) {
-        super();
-        this.id = id;
-        this.titulo = titulo;
-        this.observacoes = observacoes;
-        this.prioridade = prioridade;
-        this.status = status;
-        this.tecnico = tecnico;
-        this.cliente = cliente;
-
-
-    }
-
+ 
 
 
 }
