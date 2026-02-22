@@ -2,13 +2,13 @@ package com.test.projeto_full.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.test.projeto_full.domain.Enums.Perfil;
+import com.test.projeto_full.domain.dtos.TecnicoDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 
 import java.util.ArrayList;
 import java.util.List;
-
-
+import java.util.stream.Collectors;
 
 
 @Entity
@@ -27,7 +27,16 @@ public class Tecnico extends Pessoa {
         super();
         addPerfil(Perfil.CLIENTE);
     }
-
+    public Tecnico(TecnicoDTO obj) {
+        super();
+        this.id = obj.getId();
+        this.nome = obj.getNome();
+        this.cpf = obj.getCpf();
+        this.email = obj.getEmail();
+        this.senha = obj.getSenha();
+        this.perfis = obj.getPerfis().stream().map(Perfil::getCodigo).collect(Collectors.toSet());
+        this.datacriacao = obj.getDatacriacao();
+    }
     public List<Chamado> getChamados() {
         return chamados;
     }

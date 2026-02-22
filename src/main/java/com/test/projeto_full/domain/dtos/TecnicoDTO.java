@@ -8,7 +8,9 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class TecnicoDTO implements Serializable {
@@ -95,5 +97,9 @@ public class TecnicoDTO implements Serializable {
         this.senha = obj.getSenha();
         this.perfis = obj.getPerfis().stream().map(Perfil::getCodigo).collect(Collectors.toSet());
         this.datacriacao = obj.getDatacriacao();
+    }
+
+    public Object collect(Collector<Object, ?, List<Object>> list) {
+        return null;
     }
 }
