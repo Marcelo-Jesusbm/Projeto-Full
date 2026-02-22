@@ -4,6 +4,7 @@ package com.test.projeto_full.controller;
 import com.test.projeto_full.domain.Tecnico;
 import com.test.projeto_full.domain.dtos.TecnicoDTO;
 import com.test.projeto_full.services.TecnicoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -39,7 +40,7 @@ public class TecnicoResource {
     }
 
     @PostMapping
-    public ResponseEntity<TecnicoDTO> create(@RequestBody TecnicoDTO objTDO) {
+    public ResponseEntity<TecnicoDTO> create(@Valid @RequestBody TecnicoDTO objTDO) {
 
         Tecnico newObj = service.create(objTDO);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
