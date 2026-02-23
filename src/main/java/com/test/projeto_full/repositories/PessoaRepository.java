@@ -1,6 +1,6 @@
 package com.test.projeto_full.repositories;
 
-import com.test.projeto_full.domain.Pessoa;
+import com.test.projeto_full.domain.entity.Pessoa;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

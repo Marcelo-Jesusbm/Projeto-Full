@@ -1,4 +1,4 @@
-package com.test.projeto_full.domain;
+package com.test.projeto_full.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.test.projeto_full.domain.Enums.Prioridade;

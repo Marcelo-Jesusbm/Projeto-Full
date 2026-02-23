@@ -2,7 +2,7 @@ package com.test.projeto_full.domain.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.test.projeto_full.domain.Enums.Perfil;
-import com.test.projeto_full.domain.Tecnico;
+import com.test.projeto_full.domain.entity.Tecnico;
 import jakarta.validation.constraints.NotNull;
 
 import java.io.Serial;

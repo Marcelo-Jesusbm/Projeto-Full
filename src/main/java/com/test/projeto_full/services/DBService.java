@@ -1,11 +1,11 @@
 package com.test.projeto_full.services;
 
-import com.test.projeto_full.domain.Chamado;
-import com.test.projeto_full.domain.Cliente;
+import com.test.projeto_full.domain.entity.Chamado;
+import com.test.projeto_full.domain.entity.Cliente;
 import com.test.projeto_full.domain.Enums.Perfil;
 import com.test.projeto_full.domain.Enums.Prioridade;
 import com.test.projeto_full.domain.Enums.Status;
-import com.test.projeto_full.domain.Tecnico;
+import com.test.projeto_full.domain.entity.Tecnico;
 import com.test.projeto_full.repositories.ChamadoRepository;
 import com.test.projeto_full.repositories.ClienteRepository;
 import com.test.projeto_full.repositories.TecnicoRepository;

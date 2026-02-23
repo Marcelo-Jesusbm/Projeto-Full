@@ -1,8 +1,9 @@
-package com.test.projeto_full.domain;
+package com.test.projeto_full.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.test.projeto_full.domain.Enums.Perfil;
 import jakarta.persistence.*;
+import org.hibernate.validator.constraints.br.CPF;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -24,6 +25,7 @@ public class Pessoa implements Serializable {
     protected Integer id;
     protected String nome;
 
+    @CPF
     @Column(unique = true)
     protected String cpf;
 

@@ -1,7 +1,7 @@
 package com.test.projeto_full.controller;
 
 
-import com.test.projeto_full.domain.Tecnico;
+import com.test.projeto_full.domain.entity.Tecnico;
 import com.test.projeto_full.domain.dtos.TecnicoDTO;
 import com.test.projeto_full.services.TecnicoService;
 import jakarta.validation.Valid;
@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @RestController
@@ -30,6 +28,7 @@ public class TecnicoResource {
 
 
     }
+
     @GetMapping
     public ResponseEntity<List<TecnicoDTO>> findAll() {
 
@@ -48,4 +47,25 @@ public class TecnicoResource {
 
 
     }
+
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<TecnicoDTO> update(@PathVariable Integer id,
+                                             @Valid @RequestBody TecnicoDTO objTDO) {
+
+        Tecnico obj = service.update(id, objTDO);
+        return ResponseEntity.ok().body(new TecnicoDTO(obj));
+
+
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
+
+
+
 }
