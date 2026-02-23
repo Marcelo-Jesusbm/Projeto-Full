@@ -1,13 +1,14 @@
 package com.test.projeto_full.services;
 
 
+import com.test.projeto_full.domain.dtos.ClienteDTO;
+import com.test.projeto_full.domain.entity.Cliente;
 import com.test.projeto_full.domain.entity.Pessoa;
 import com.test.projeto_full.domain.entity.Tecnico;
-import com.test.projeto_full.domain.dtos.TecnicoDTO;
 import com.test.projeto_full.exceptions.DataIntegrityViolationException;
 import com.test.projeto_full.exceptions.ObjectNotFoundException;
+import com.test.projeto_full.repositories.ClienteRepository;
 import com.test.projeto_full.repositories.PessoaRepository;
-import com.test.projeto_full.repositories.TecnicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,28 +18,28 @@ import java.util.Optional;
 @Service
 public class ClienteService {
     @Autowired
-    private TecnicoRepository repository;
+    private ClienteRepository repository;
     @Autowired
     private PessoaRepository pessoaRepository;
 
-    public Tecnico findById(Integer id){
-        Optional<Tecnico> obj = repository.findById(id);
+    public Cliente findById(Integer id){
+        Optional<Cliente> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto nao encontrado! Id: " + id));
     }
 
-    public List<Tecnico> findAll() {
+    public List<Cliente> findAll() {
 
         return repository.findAll();
     }
 
-    public Tecnico create(TecnicoDTO objDTO) {
+    public Cliente create(ClienteDTO objDTO) {
         objDTO.setId(null);
         validaPorCpfEEmail(objDTO);
-        Tecnico newObj = new Tecnico(objDTO);
+        Cliente newObj = new Cliente(objDTO);
         return repository.save(newObj);
 
     }
-    private void validaPorCpfEEmail(TecnicoDTO objDTO) {
+    private void validaPorCpfEEmail(ClienteDTO objDTO) {
         Optional<Pessoa> obj = pessoaRepository.findByCpf(objDTO.getCpf());
         if (obj.isPresent() && obj.get().getId() != objDTO.getId()) {
             throw new DataIntegrityViolationException("CPF já cadastrado no sistema!");
@@ -49,18 +50,18 @@ public class ClienteService {
         }
     }
 
-        public Tecnico update(Integer id, TecnicoDTO objDTO) {
+        public Cliente update(Integer id, ClienteDTO objDTO) {
             objDTO.setId(id);
-            Tecnico oldObj = findById(id);
+            Cliente oldObj = findById(id);
             validaPorCpfEEmail(objDTO);
-            oldObj = new Tecnico(objDTO);
+            oldObj = new Cliente(objDTO);
             return repository.save(oldObj);
 
 
     }
 
     public void delete(Integer id) {
-        Tecnico obj = findById(id);
+        Cliente obj = findById(id);
         if (obj.getChamados().size() > 0) {
             throw new DataIntegrityViolationException("Técnico possui ordens de serviço e não pode ser deletado!");
         }
