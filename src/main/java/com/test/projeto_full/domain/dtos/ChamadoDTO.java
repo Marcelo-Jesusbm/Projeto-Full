@@ -2,10 +2,13 @@ package com.test.projeto_full.domain.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.test.projeto_full.domain.entity.Chamado;
+import jakarta.validation.constraints.NotNull;
 
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collector;
 
 public class ChamadoDTO implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -114,16 +117,23 @@ public class ChamadoDTO implements Serializable {
 
     private Integer id;
 
+    @NotNull(message = "O campo TITULO é requerido")
     private String titulo;
+    @NotNull(message = "O campo OBSERVACOES é requerido")
     private String observacoes;
+    @NotNull(message = "O campo PRIORIDADE é requerido")
     private Integer prioridade;
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataAbertura = LocalDate.now();
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataFechamento;
+    @NotNull(message = "O campo STATUS é requerido")
     private Integer status;
+    @NotNull(message = "O campo TECNICO é requerido")
     private Integer tecnico;
+    @NotNull(message = "O campo CLIENTE é requerido")
     private Integer cliente;
+
     private String nomeTecnico;
     private String nomeCliente;
 
@@ -132,7 +142,9 @@ public class ChamadoDTO implements Serializable {
     }
 
 
-
+    public Object collect(Collector<Object,?, List<Object>> list) {
+        return null;
+    }
 
 
 }
