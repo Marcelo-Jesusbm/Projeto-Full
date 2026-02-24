@@ -10,6 +10,7 @@ import com.test.projeto_full.repositories.ChamadoRepository;
 import com.test.projeto_full.repositories.ClienteRepository;
 import com.test.projeto_full.repositories.TecnicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -23,6 +24,9 @@ public class DBService {
     private ClienteRepository clienteRepository;
     @Autowired
     private ChamadoRepository chamadoRepository;
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+
 
 
     public void instanciaDB(){
