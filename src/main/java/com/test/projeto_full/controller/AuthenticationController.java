@@ -26,11 +26,7 @@ public class AuthenticationController {
     @Autowired
     private JwtTokenProvider tokenProvider;
 
-    /**
-     * Realiza o login do usuário e retorna um JWT token
-     * @param loginDTO - DTO com CPF e senha
-     * @return ResponseEntity com o token JWT
-     */
+
     @PostMapping("/login")
     public ResponseEntity<JwtResponse> login(@RequestBody LoginDTO loginDTO) {
         // Busca o usuário pelo CPF
